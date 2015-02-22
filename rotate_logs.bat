@@ -10,13 +10,13 @@
 :::::::::::::: CONFIG ::::::::::::::::::
 
 :: Set your Arma2AO Base installation directory. LEAVE OFF THE ENDING \
-set arma2srvpath=C:\Program Files (x86)\Steam\SteamApps\common\Arma 2 Operation Arrowhead
+set arma2srvpath=D:\GAME\steamapps\common\Arma 2 Operation Arrowhead
 
 :: Set your Default server profile name. This is the name of the directory that stores your server.cfg
 :: This will be used in the case that you don't launch this script without the server param.
 :: Example: cfgdayz, US6, Chicago13, ect
 :: DEFAULTPROFILE
-set srvname=instance_11_chernarus
+set srvname=instance_24_Napf
 
 :: Delete Original log files after they have been rotated? This keeps your logs more organized and saves space.
 :: This will not work unless the server is stopped first. This option works best set to 1 when using FireDaemon's Pre/Post Service tab
@@ -37,7 +37,7 @@ TITLE  DayZ %servername% Server Log Rotater
 :: Set Debug Mode
 set debug=0
 :: Set Debug Timeout in seconds
-set dbsecs=10
+set dbsecs=1
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::  STOP EDITING ::::::::::::::::::::::::::::::::::::::
@@ -102,6 +102,10 @@ copy "%arma2srvpath%\%servername%\BattlEye\setdamage.log" "%arma2srvpath%\%serve
 copy "%arma2srvpath%\%servername%\BattlEye\setpos.log" "%arma2srvpath%\%servername%\RotatedLogs\%weekday%\%dtStamp%\BattlEye\setpos.log"
 copy "%arma2srvpath%\%servername%\BattlEye\setvariable.log" "%arma2srvpath%\%servername%\RotatedLogs\%weekday%\%dtStamp%\BattlEye\setvariable.log"
 copy "%arma2srvpath%\%servername%\BattlEye\addmagazinecargo.log" "%arma2srvpath%\%servername%\RotatedLogs\%weekday%\%dtStamp%\BattlEye\addmagazinecargo.log"
+copy "%arma2srvpath%\%servername%\BattlEye\addweaponcargo.log" "%arma2srvpath%\%servername%\RotatedLogs\%weekday%\%dtStamp%\BattlEye\addweaponcargoo.log"
+copy "%arma2srvpath%\%servername%\BattlEye\attachto.log" "%arma2srvpath%\%servername%\RotatedLogs\%weekday%\%dtStamp%\BattlEye\attachto.log"
+copy "%arma2srvpath%\%servername%\BattlEye\deletevehicle.log" "%arma2srvpath%\%servername%\RotatedLogs\%weekday%\%dtStamp%\BattlEye\deletevehicle.log"
+copy "%arma2srvpath%\%servername%\BattlEye\selectplayer.log" "%arma2srvpath%\%servername%\RotatedLogs\%weekday%\%dtStamp%\BattlEye\selectplayer.log"
 
 echo (%weekday%) (%date%) (%time%)) Logs are backed up now...
 echo (%weekday%) (%date%) (%time%) Removing original log files.
@@ -120,6 +124,12 @@ del /Q /F "%arma2srvpath%\%servername%\BattlEye\setdamage.log"
 del /Q /F "%arma2srvpath%\%servername%\BattlEye\setpos.log"
 del /Q /F "%arma2srvpath%\%servername%\BattlEye\setvariable.log"
 del /Q /F "%arma2srvpath%\%servername%\BattlEye\addmagazinecargo.log"
+del /Q /F "%arma2srvpath%\%servername%\HiveExt.log"
+del /Q /F "%arma2srvpath%\%servername%\server_log.txt"
+del /Q /F "%arma2srvpath%\%servername%\BattlEye\addweaponcargo.log"
+del /Q /F "%arma2srvpath%\%servername%\BattlEye\selectplayer.log"
+del /Q /F "%arma2srvpath%\%servername%\BattlEye\deletevehicle.log"
+del /Q /F "%arma2srvpath%\%servername%\BattlEye\attachto.log"
 
 if %debug% == 1 (
 timeout %dbsecs%
